@@ -1,0 +1,11 @@
+.margin-auto {
+    margin: auto;
+}
+
+.margin-vert {
+    margin: auto 0;
+}
+
+.margin-horiz {
+    margin: 0 auto;
+}

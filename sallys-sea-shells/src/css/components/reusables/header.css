@@ -1,0 +1,28 @@
+
+img {
+    height: 100px;
+    width: 75px;
+}
+
+header {
+    height: 82px;
+}
+
+a {
+    margin: 24px;
+    text-decoration: none;
+    color: black;
+}
+
+.letter-button {
+    border-radius: 25px;
+    height: 32px;
+    width: 32px;
+    background-color: blueviolet;
+    margin-right: 12px;
+}
+
+.logo {
+    height: 80px;
+    width: 80px;
+}
