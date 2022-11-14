@@ -25,7 +25,7 @@ const SignIn = () => {
 
         axios.post('http://localhost:8080/signIn', user)
         .then((response) => {
-            console.log(response.data)
+            localStorage.setItem("email", response.data.email)
             navigator('/')
         }).catch((e) => {
             console.log(e)

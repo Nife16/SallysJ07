@@ -25,7 +25,6 @@ const SignUp = () => {
 
         axios.post('http://localhost:8080/signUp', user)
         .then((response) => {
-            console.log(response.data)
             navigator('/sign-in')
         }).catch((e) => {
             console.log(e)

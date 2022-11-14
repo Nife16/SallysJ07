@@ -15,4 +15,24 @@ public class UserService {
 	public User save(User user) {
 		return userRepo.save(user);
 	}
+
+	public User signIn(User user) throws Exception {
+		User foundUser = userRepo.signIn(user.getEmail(), user.getPassword());
+
+		if(foundUser == null) {
+			throw new Exception("No user found.");
+		}
+
+		return foundUser;
+	}
+
+	public User getUserByEmail(String email) throws Exception {
+		User foundUser = userRepo.getUserByEmail(email);
+
+		if(foundUser == null) {
+			throw new Exception("No user found.");
+		}
+
+		return foundUser;
+	}
 }
