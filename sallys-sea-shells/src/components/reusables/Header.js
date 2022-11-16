@@ -7,6 +7,7 @@ const Header = (props) => {
 
     const clickHandler = () => {
         localStorage.removeItem('email')
+        props.setUser({})
         navigator('/')
     }
 

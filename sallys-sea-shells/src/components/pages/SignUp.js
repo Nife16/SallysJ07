@@ -1,13 +1,19 @@
 import Header from "../reusables/Header"
 import '../../css/components/pages/sign-up.css'
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useNavigate } from "react-router"
 import axios from 'axios'
 
 
-const SignUp = () => {
+const SignUp = (props) => {
 
+    
     const navigator = useNavigate()
+    useEffect(() => {
+        if(props.user.id !== undefined) {
+            navigator('/')
+        }
+    })
     const [user, setUser] = useState({
         email: '',
         password: ''
@@ -33,8 +39,7 @@ const SignUp = () => {
     }
 
     return (
-        <div className="flex-col container">
-            <Header />
+        <div className="">
             <div className="center flex-col">
                 <h1>
                     Sign UP YA FOO
