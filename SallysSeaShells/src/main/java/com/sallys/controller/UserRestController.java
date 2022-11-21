@@ -1,6 +1,7 @@
 package com.sallys.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -34,10 +35,12 @@ public class UserRestController {
 			User signedUpUser = userService.save(user);
 			
 			return new ResponseEntity<>(signedUpUser, HttpStatus.CREATED);
+		} catch(DataIntegrityViolationException e) {
+			return new ResponseEntity<>("That email is already in use.", HttpStatus.BAD_REQUEST);
 		} catch (Exception e) {
-			return new ResponseEntity<>(e, HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
 		} catch (Error e) {
-			return new ResponseEntity<>(e, HttpStatus.INTERNAL_SERVER_ERROR);
+			return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		
 		

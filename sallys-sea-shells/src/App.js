@@ -4,7 +4,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from './components/pages/Home';
 import SignIn from './components/pages/SignIn';
 import SignUp from './components/pages/SignUp';
-import PageWrapper from './components/reusables/PageWrapper';
+import PageWrapper from './components/reusables/PageWrapper'; 
+import  { getUserByEmail } from './makeRequest'
 
 
 function App() {
@@ -16,20 +17,17 @@ function App() {
 
     const email = localStorage.getItem("email")
     if (email !== null) {
-      axios.get(`http://localhost:8080/getUserByEmail/${email}`)
-        .then((response) => {
-          setUser(response.data)
-          setIsLoading(false)
-        })
-        .catch((e) => {
-          console.log(e)
-          setIsLoading(false)
-        })
+      const user = getUserByEmail(email)
+      if(user.id !== undefined) {
+        setUser(user)
+      } else {
+        setIsLoading(false)
+      }
     }
   }, [])
 
   return (
-    <PageWrapper user={user} setUser={setUser}>
+    <PageWrapper u ser={user} setUser={setUser}>
       <Routes>
         <Route path="/" element={<Home user={user} />} />
         <Route path="/sign-up" element={<SignUp user={user} />} />
